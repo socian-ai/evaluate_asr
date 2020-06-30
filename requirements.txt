@@ -1,0 +1,4 @@
+python-levenshtein
+tqdm
+requests
+pandas
