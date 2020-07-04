@@ -9,7 +9,7 @@ The script transcribes audio files in a given directory, calculates WER and gene
 Now you are ready to run the script.
 
 # How to run
-Before running the script, activate the created virtualenv using `source venv/bin/python` (assuming you are in the repository directory where you cloned it). 
+Before running the script, activate the created virtualenv using `source venv/bin/activate` (assuming you are in the repository directory where you cloned it). 
 
 ## Input params
 - input-dir: The directory where your audio files and their corresponding ground truth transcripts live. Audio files and transcripts must use same filename. For example, audio1.wav file's transcript name must be audio1.txt
