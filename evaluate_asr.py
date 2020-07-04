@@ -42,14 +42,14 @@ def calculate_wer(hypothesis, ground_truth):
         return float(distance) / num_words
 
 
-def read_transcript(wav_path):
-    transcript_path = wav_path.replace('.mp3', '.txt')
+def read_transcript(wav_path, audio_ext):
+    transcript_path = wav_path.replace("."+audio_ext', '.txt')
     with open(transcript_path, mode='r', encoding='utf8') as f:
         text = f.read()
     return text
 
-def write_predicted_transcript(wav_path, text):
-    transcript_path = wav_path.replace('.mp3', '-predicted.txt')
+def write_predicted_transcript(wav_path, text, audio_ext):
+    transcript_path = wav_path.replace('.'+audio_ext, '-predicted.txt')
     with open(transcript_path, mode='w', encoding='utf8') as f:
         f.write(text)
     
@@ -100,7 +100,8 @@ if __name__ == '__main__':
             post_file = {'file':open(audio, 'rb')}
             r = requests.post(url, files=post_file)
             hyp_text = r.json()['transcript']
-            ground_truth = read_transcript(audio)
+            ground_truth = read_transcript(audio, audio_extension)
+            write_predicted_transcript(audio, hyp_text, audio_extension)
             wer = calculate_wer(hyp_text, ground_truth)
             diff = dmp.diff_main(ground_truth, hyp_text)
             total_wer += wer
