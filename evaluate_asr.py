@@ -43,7 +43,7 @@ def calculate_wer(hypothesis, ground_truth):
 
 
 def read_transcript(wav_path, audio_ext):
-    transcript_path = wav_path.replace("."+audio_ext', '.txt')
+    transcript_path = wav_path.replace("."+audio_ext, '.txt')
     with open(transcript_path, mode='r', encoding='utf8') as f:
         text = f.read()
     return text
